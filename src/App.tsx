@@ -1,11 +1,15 @@
-
+import { menuItems } from "./data/db"
 
 function App() {
-
+console.log(menuItems)
 
   return (
     <>
-      <h2>Hola mundo</h2>
+      <header className="bg-teal-400 py-5">
+        <h1 className="text-center text-4xl font-bold">Calculadora de Propinas y Consumo</h1>
+      </header>
+
+
     </>
   )
 }
