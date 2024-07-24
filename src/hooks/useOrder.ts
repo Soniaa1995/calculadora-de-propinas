@@ -29,12 +29,18 @@ export default function useOrder(){
         setOrder(order.filter(item => item.id !== id))
     }
 
+    const placeOrder = () => { //asi reiniciamos
+        setOrder([])
+        setPropina(0)
+    }
+
 
     return {
         order,
         propina, 
         setPropina,
         addItem,
-        removeItem
+        removeItem,
+        placeOrder
     }
 }

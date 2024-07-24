@@ -7,7 +7,7 @@ import PropinaForm from "./components/PropinaForm"
 
 function App() {
 
-    const { order, addItem, removeItem, propina, setPropina} = useOrder()
+    const { order, addItem, removeItem, propina, setPropina, placeOrder} = useOrder()
 
   return (
     <>
@@ -31,19 +31,28 @@ function App() {
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <OrderContents 
-            order={order}
-            removeItem={removeItem}
-          />
+          {order.length > 0 ? (
+            <>
+              <OrderContents 
+                order={order}
+                removeItem={removeItem}
+              />
 
-          <PropinaForm 
-            setPropina={setPropina}
-          />
+              <PropinaForm 
+                setPropina={setPropina}
+                propina={propina}
+              />
 
-          <OrderTotal 
-            order={order}
-            propina={propina}
-          />
+              <OrderTotal 
+                order={order}
+                propina={propina}
+                placeOrder={placeOrder}
+              />
+            </>
+          ) : (
+            <p className="text-center">La orden está vacía</p>
+          )}
+          
         </div>
         
         

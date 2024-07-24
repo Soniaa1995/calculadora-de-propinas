@@ -19,24 +19,26 @@ const propinaOptions = [
 ];
 
 type PropinaFormProps = {
-    setPropina: Dispatch<SetStateAction<number>>
+    setPropina: Dispatch<SetStateAction<number>>,
+    propina: number
 }
 
-export default function PropinaForm({setPropina} : PropinaFormProps) {
+export default function PropinaForm({setPropina, propina} : PropinaFormProps) {
   return (
     <div>
       <h3 className="font-bold text-2xl">Propina</h3>
 
       <form>
-        {propinaOptions.map((propina) => (
-          <div key={propina.id} className="flex gap-2">
-            <label htmlFor={propina.id}>{propina.label}</label>
+        {propinaOptions.map((propinaOption) => (
+          <div key={propinaOption.id} className="flex gap-2">
+            <label htmlFor={propinaOption.id}>{propinaOption.label}</label>
             <input
-              id={propina.id}
+              id={propinaOption.id}
               type="radio"
               name="propina"
-              value={propina.value}
+              value={propinaOption.value}
               onChange={e => setPropina(+e.target.value)} //ese + convierte el string en tipo number
+              checked={propinaOption.value === propina}
             />
           </div>
         ))}
