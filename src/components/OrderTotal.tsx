@@ -3,13 +3,15 @@ import { OrderItem } from "../types"
 import { formatCurrency } from "../helpers"
 
 type OrderTotalProps = {
-    order: OrderItem[]
+    order: OrderItem[],
+    propina: number
 }
 
 
-export default function OrderTotal({order} : OrderTotalProps) {
+export default function OrderTotal({order, propina} : OrderTotalProps) {
 
     const subTotalAmount = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0), [order]) //solo se renderiza el codigo cuando cambie la dependencia el useMemo
+    const propinaAmount = useMemo(() => subTotalAmount * propina, [propina, order])
 
   return (
     
@@ -21,7 +23,7 @@ export default function OrderTotal({order} : OrderTotalProps) {
             </p>
 
             <p>Propina:
-                <span className="font-bold"> 0€</span>
+                <span className="font-bold"> {formatCurrency(propinaAmount)}</span>
             </p>
 
             <p>Total a pagar:

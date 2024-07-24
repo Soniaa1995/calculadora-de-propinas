@@ -3,10 +3,11 @@ import OrderContents from "./components/OrderContents"
 import { menuItems } from "./data/db"
 import useOrder from "./hooks/useOrder"
 import OrderTotal from "./components/OrderTotal"
+import PropinaForm from "./components/PropinaForm"
 
 function App() {
 
-    const { order, addItem, removeItem} = useOrder()
+    const { order, addItem, removeItem, propina, setPropina} = useOrder()
 
   return (
     <>
@@ -30,14 +31,19 @@ function App() {
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-           <OrderContents 
-              order={order}
-              removeItem={removeItem}
-           />
+          <OrderContents 
+            order={order}
+            removeItem={removeItem}
+          />
 
-           <OrderTotal 
-              order={order}
-           />
+          <PropinaForm 
+            setPropina={setPropina}
+          />
+
+          <OrderTotal 
+            order={order}
+            propina={propina}
+          />
         </div>
         
         

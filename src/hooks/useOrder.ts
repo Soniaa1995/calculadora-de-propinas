@@ -6,6 +6,8 @@ export default function useOrder(){
 
     const [order, setOrder] = useState<OrderItem[]>([]) //con el ordenItem hace que el order sea del tipo ordenItem
 
+    const [propina, setPropina] = useState(0)
+
     const addItem = (item : MenuItem) => {
         
         const itemExsit = order.find(orderItem => orderItem.id === item.id)
@@ -30,6 +32,8 @@ export default function useOrder(){
 
     return {
         order,
+        propina, 
+        setPropina,
         addItem,
         removeItem
     }
